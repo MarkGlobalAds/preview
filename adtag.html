@@ -27,6 +27,7 @@
         (function() {
         var previewId = location.search;
         if(!previewId) return
+        previewId = previewId.replace('?','')
         var bonzai_adid = previewId;
         var bonzai_sn = 'DBM'; 
         var bonzai_data = '{"network":{"keyId":"DBM","name":"DBM","settings":{"env":"wap","tagType":"iFrame","iFrmBust":"Y","proto":"https","closeBtn":"N"},"macros":{"addiTr":{"cachbust":"${CACHEBUSTER}","lati":"","longi":"","segId":""},"clkTr":{"img":["${CLICK_URL}"],"scr":[]},"rendTr":{"img":[],"scr":[]},"engmTr":{"img":[],"scr":[]},"imprTr":{"img":[""],"scr":[]}}}}'; 
