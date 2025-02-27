@@ -7,26 +7,26 @@
     <title>Ad</title>
 </head>
 <body>
-    <div class='bonzai-wrap' style='height:100%;width:100%;'> 
+    <div style='height:100%;width:100%;'> 
         <script type='text/javascript'>
         (function() {
-        var previewId = location.search;
-        if(!previewId) return
-        previewId = previewId.replace('?','')
-        var bonzai_adid = previewId;
-        var bonzai_sn = 'DBM'; 
-        var bonzai_data = '{"network":{"keyId":"DBM","name":"DBM","settings":{"env":"wap","tagType":"iFrame","iFrmBust":"Y","proto":"https","closeBtn":"N"},"macros":{"addiTr":{"cachbust":"${CACHEBUSTER}","lati":"","longi":"","segId":""},"clkTr":{"img":["${CLICK_URL}"],"scr":[]},"rendTr":{"img":[],"scr":[]},"engmTr":{"img":[],"scr":[]},"imprTr":{"img":[""],"scr":[]}}}}'; 
+        var params = new URLSearchParams(location.search);
+        var  adid = params.get('adid');
+        var  plid = params.get('plid');
+        if(!adid || !plid) return;
+        var sn = 'DBM'; 
+        var cacheBuster = Math.random(); 
+        var data = '{"network":{"keyId":"DBM","name":"DBM","settings":{"env":"wap","tagType":"iFrame","iFrmBust":"Y","proto":"https","closeBtn":"N"},"macros":{"addiTr":{"cachbust":'+cacheBuster+',"lati":"","longi":"","segId":""},"clkTr":{"img":["${CLICK_URL}"],"scr":[]},"rendTr":{"img":[],"scr":[]},"engmTr":{"img":[],"scr":[]},"imprTr":{"img":[""],"scr":[]}}}}'; 
         var protocol = 'https';
         var scripts = document.getElementsByTagName('script'); 
-        var cacheBuster = '${CACHEBUSTER}'; 
         for(var i = scripts.length-1; i >= 0; i--) { 
         var s = scripts[i]; 
         var script = document.createElement('script'); 
-        var index = window.bonzaiScriptIndex  = (typeof window.bonzaiScriptIndex == 'undefined') ? 0 : ++window.bonzaiScriptIndex; 
-        script.id = 'bonzai_script_' + index;
-        if(!window.bonzaiObj || (typeof window.bonzaiObj == 'undefined')) {window.bonzaiObj = {};} 
-        window.bonzaiObj[script.id] = bonzai_data;
-        script.src = protocol + '://invoke.bonzai.co/mizu/invoke.do?proto=' + protocol + '&adid='+bonzai_adid+'&scriptid=' + script.id +'&sn='+bonzai_sn +'&plid=2665930652461059351'  + '&rnd=' + cacheBuster +'&ssa=true'; 
+        var index = window.scriptIndex  = (typeof window.scriptIndex == 'undefined') ? 0 : ++window.scriptIndex; 
+        script.id = 'script_' + index;
+        if(!window.adObj || (typeof window.adObj == 'undefined')) {window.adObj = {};} 
+        window.adObj[script.id] = data;
+        script.src = protocol + '://invoke.bonzai.co/mizu/invoke.do?proto=' + protocol + '&adid='+adid+'&scriptid=' + script.id +'&sn='+sn +'&plid='+plid+'&rnd=' + cacheBuster +'&ssa=true'; 
         s.parentNode.insertBefore(script, s.nextSibling); 
         break; 
         }})(this); 
