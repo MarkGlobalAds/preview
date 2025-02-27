@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            margin: 0 auto;
+            padding: 0;
+            height: 100%;
+            min-height: 100%;
+        }
+        iframe {
+            border: none;
+            /* margin: 10px 10px 2px 10px; */
+        }
+    </style>
+</head>
+<body>
+    <div class='bonzai-wrap' style='height:100%;width:100%;'> 
+        <script type='text/javascript'>
+        (function() {
+        var previewId = location.search;
+        if(!previewId) return
+        var bonzai_adid = previewId;
+        var bonzai_sn = 'DBM'; 
+        var bonzai_data = '{"network":{"keyId":"DBM","name":"DBM","settings":{"env":"wap","tagType":"iFrame","iFrmBust":"Y","proto":"https","closeBtn":"N"},"macros":{"addiTr":{"cachbust":"${CACHEBUSTER}","lati":"","longi":"","segId":""},"clkTr":{"img":["${CLICK_URL}"],"scr":[]},"rendTr":{"img":[],"scr":[]},"engmTr":{"img":[],"scr":[]},"imprTr":{"img":[""],"scr":[]}}}}'; 
+        var protocol = 'https';
+        var scripts = document.getElementsByTagName('script'); 
+        var cacheBuster = '${CACHEBUSTER}'; 
+        for(var i = scripts.length-1; i >= 0; i--) { 
+        var s = scripts[i]; 
+        if(s.innerHTML.indexOf(bonzai_adid) >= 0) { 
+        var script = document.createElement('script'); 
+        var index = window.bonzaiScriptIndex  = (typeof window.bonzaiScriptIndex == 'undefined') ? 0 : ++window.bonzaiScriptIndex; 
+        script.id = 'bonzai_script_' + index;
+        if(!window.bonzaiObj || (typeof window.bonzaiObj == 'undefined')) {window.bonzaiObj = {};} 
+        window.bonzaiObj[script.id] = bonzai_data;
+        script.src = protocol + '://invoke.bonzai.co/mizu/invoke.do?proto=' + protocol + '&adid='+bonzai_adid+'&scriptid=' + script.id +'&sn='+bonzai_sn +'&plid=2665930652461059351'  + '&rnd=' + cacheBuster +'&ssa=true'; 
+        s.parentNode.insertBefore(script, s.nextSibling); 
+        break; 
+        }}})(this); 
+        </script> 
+    </div> 
+</body>
+</html>
